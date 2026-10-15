@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #bfdbfe;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #dbeafe;
+    color: #1e3a8a;
+}
+
+tr:nth-child(even) td {
+    background: #f4f8ff;
+}
+
+form.inline {
+    display: inline;
+}
+
+button.excluir {
+    background: #b91c1c;
+}
+
+button.excluir:hover {
+    background: #991b1b;
+}

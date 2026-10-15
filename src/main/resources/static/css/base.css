@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #e8f1fc;
+    color: #1e293b;
+    margin: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    border-top: 6px solid #1d4ed8;
+}
+
+h1 {
+    color: #1e3a8a;
+}
+
+h2 {
+    color: #1d4ed8;
+}
+
+a {
+    color: #1d4ed8;
+}
+
+button {
+    padding: 8px 16px;
+    background: #1d4ed8;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+.Segura { color: #15803d; font-weight: bold; }
+.Suspeita { color: #b45309; font-weight: bold; }
+.Perigosa { color: #b91c1c; font-weight: bold; }
+.erro { color: #b91c1c; }

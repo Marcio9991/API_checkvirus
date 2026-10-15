@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar - CheckVirus</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/formulario.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Editar verificação</h1>
+    <p><strong>URL:</strong> <span th:text="${verificacao.url}"></span></p>
+    <p><strong>Situação:</strong> <span th:text="${verificacao.status}" th:class="${verificacao.status}"></span></p>
+
+    <form th:action="@{/editar/{id}(id=${verificacao.id})}" th:object="${verificacao}" method="post">
+        <label>Observação</label>
+        <textarea th:field="*{observacao}" rows="4"></textarea>
+        <button type="submit">Salvar alterações</button>
+        <a th:href="@{/}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

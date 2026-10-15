@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CheckVirus</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/tabela.css}">
+    <link rel="stylesheet" th:href="@{/css/formulario.css}">
+</head>
+<body>
+<div class="container">
+    <h1>CheckVirus</h1>
+    <p>Verifique se um link é seguro usando o VirusTotal.</p>
+
+    <form th:action="@{/consultar}" method="post" class="linha">
+        <input type="text" name="url" placeholder="https://exemplo.com" required>
+        <button type="submit">Verificar</button>
+    </form>
+
+    <p class="erro" th:if="${erro}" th:text="${erro}"></p>
+
+    <h2>Verificações salvas</h2>
+    <p th:if="${#lists.isEmpty(verificacoes)}">Nenhuma verificação salva ainda.</p>
+
+    <table th:unless="${#lists.isEmpty(verificacoes)}">
+        <tr>
+            <th>URL</th>
+            <th>Situação</th>
+            <th>Malicioso</th>
+            <th>Suspeito</th>
+            <th>Data</th>
+            <th>Observação</th>
+            <th>Ações</th>
+        </tr>
+        <tr th:each="v : ${verificacoes}">
+            <td th:text="${v.url}"></td>
+            <td th:text="${v.status}" th:class="${v.status}"></td>
+            <td th:text="${v.malicioso}"></td>
+            <td th:text="${v.suspeito}"></td>
+            <td th:text="${#temporals.format(v.dataVerificacao, 'dd/MM/yyyy HH:mm')}"></td>
+            <td th:text="${v.observacao}"></td>
+            <td>
+                <a th:href="@{/editar/{id}(id=${v.id})}">Editar</a>
+                <form th:action="@{/excluir/{id}(id=${v.id})}" method="post" class="inline">
+                    <button type="submit" class="excluir">Excluir</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

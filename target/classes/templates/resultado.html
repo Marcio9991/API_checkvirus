@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado - CheckVirus</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/tabela.css}">
+    <link rel="stylesheet" th:href="@{/css/formulario.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Resultado da verificação</h1>
+    <p><strong>URL:</strong> <span th:text="${verificacao.url}"></span></p>
+    <p><strong>Situação:</strong> <span th:text="${verificacao.status}" th:class="${verificacao.status}"></span></p>
+
+    <table>
+        <tr><th>Malicioso</th><th>Suspeito</th><th>Inofensivo</th><th>Não detectado</th></tr>
+        <tr>
+            <td th:text="${verificacao.malicioso}"></td>
+            <td th:text="${verificacao.suspeito}"></td>
+            <td th:text="${verificacao.inofensivo}"></td>
+            <td th:text="${verificacao.naoDetectado}"></td>
+        </tr>
+    </table>
+
+    <form th:action="@{/salvar}" th:object="${verificacao}" method="post">
+        <input type="hidden" th:field="*{url}">
+        <input type="hidden" th:field="*{malicioso}">
+        <input type="hidden" th:field="*{suspeito}">
+        <input type="hidden" th:field="*{inofensivo}">
+        <input type="hidden" th:field="*{naoDetectado}">
+        <label>Observação (opcional)</label>
+        <textarea th:field="*{observacao}" rows="3"></textarea>
+        <button type="submit">Salvar verificação</button>
+        <a th:href="@{/}">Voltar</a>
+    </form>
+</div>
+</body>
+</html>

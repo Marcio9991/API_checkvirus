@@ -1,0 +1,2 @@
+spring.datasource.password=SUA_SENHA_DO_MYSQL
+virustotal.api.key=SUA_CHAVE_DO_VIRUSTOTAL
